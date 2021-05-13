@@ -1,6 +1,5 @@
 package br.com.bank.onlybank.entities;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,7 +12,6 @@ import java.io.Serializable;
 
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 @Builder
 @Entity(name = "BANK")
 public class Bank implements Serializable {
@@ -25,6 +23,38 @@ public class Bank implements Serializable {
     private Long id;
 
     private String name;
+
+    public Bank(Long id, String name) {
+        super();
+        this.id = id;
+        this.name = name;
+    }
+
+    public Bank(String name) {
+        super();
+        this.name = name;
+    }
+
+    public Bank(Long id) {
+        super();
+        this.id = id;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     @Override
     public int hashCode() {

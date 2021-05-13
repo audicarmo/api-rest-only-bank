@@ -59,6 +59,62 @@ public class Extract implements Serializable {
     @ManyToOne
     private Account account;
 
+    public Extract(Calendar data, OperationType operationType, Double value, Account account) {
+        super();
+        this.date = data;
+        this.operationType = operationType;
+        this.value = value;
+        this.account = account;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Calendar getData() {
+        return date;
+    }
+
+    public void setData(Calendar data) {
+        this.date = data;
+    }
+
+    public OperationType getOperationType() {
+        return operationType;
+    }
+
+    public void setPerationType(OperationType operationType) {
+        this.operationType = operationType;
+    }
+
+    public Double getValue() {
+        return value;
+    }
+
+    public void setValue(Double value) {
+        this.value = value;
+    }
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
+    }
+
+    public String getInformations() {
+        return information;
+    }
+
+    public void setInformations(String information) {
+        this.information = information;
+    }
+
     @Override
     public int hashCode() {
         final int prime = 31;

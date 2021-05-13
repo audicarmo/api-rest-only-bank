@@ -45,6 +45,55 @@ public class Agency implements Serializable {
     @JoinColumn(name = "banco_id")
     private Bank bank;
 
+    public Agency(String number, String name, Bank bank) {
+        super();
+        this.number = number;
+        this.name = name;
+        this.bank = bank;
+    }
+
+    public Agency(String number, String name) {
+        super();
+        this.number = number;
+        this.name = name;
+    }
+
+    public Agency(Long id) {
+        this.id = id;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Bank getBank() {
+        return bank;
+    }
+
+    public void setBank(Bank bank) {
+        this.bank = bank;
+    }
+
     @Override
     public int hashCode() {
         final int prime = 31;

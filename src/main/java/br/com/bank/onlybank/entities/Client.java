@@ -1,5 +1,7 @@
 package br.com.bank.onlybank.entities;
 
+import br.com.bank.onlybank.dtos.NewClientDTO;
+import br.com.bank.onlybank.enums.Profile;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -21,6 +23,7 @@ import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import static br.com.bank.onlybank.constants.ValidationConstraints.CPF_IS_REQUIRED;
 import static br.com.bank.onlybank.constants.ValidationConstraints.CPF_MAX_SIZE_IS;
@@ -33,7 +36,6 @@ import static br.com.bank.onlybank.constants.ValidationConstraints.NAME_MIN_SIZE
 import static br.com.bank.onlybank.constants.ValidationConstraints.NAME_SIZE_MUST_BE_BETWEEN;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
 @Builder
 @Entity(name = "CLIENT")
@@ -60,8 +62,75 @@ public class Client implements Serializable {
     private String key;
 
     @ElementCollection(fetch= FetchType.EAGER)
-    @CollectionTable(name="PERFIS")
+    @CollectionTable(name="PROFILES")
     private Set<Integer> profiles = new HashSet<>();
+
+    public Client() {
+        addProfile(Profile.CLIENT);
+    }
+
+    public Client(String name, String cpf, String key) {
+        super();
+        this.name = name;
+        this.cpf = cpf;
+        this.key = key;
+        addProfile(Profile.CLIENT);
+    }
+
+    public Client(Long id, String name, String cpf, String key) {
+        this.id = id;
+        this.name = name;
+        this.cpf = cpf;
+        this.key = key;
+    }
+
+    public Client(NewClientDTO newClientDTO) {
+        super();
+        this.name = newClientDTO.getName();
+        this.cpf = newClientDTO.getCpf();
+        this.key = newClientDTO.getKey();
+        addProfile(Profile.CLIENT);
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+    public Set<Profile>  getProfile(){
+        return this.profiles.stream().map(p -> Profile.toEnum(p)).collect(Collectors.toSet());
+    }
+
+    public void addProfile(Profile profile) {
+        this.profiles.add(profile.getCode());
+    }
 
     @Override
     public int hashCode() {

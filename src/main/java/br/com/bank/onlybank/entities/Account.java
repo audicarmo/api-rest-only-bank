@@ -43,6 +43,77 @@ public class Account implements Serializable {
     @JoinColumn(name="agency_id")
     private Agency agency;
 
+    public Account(String number, AccountType type, Client client, Agency agency, Double balance) {
+        super();
+        this.number = number;
+        this.type = type;
+        this.client = client;
+        this.agency = agency;
+        this.balance = balance;
+    }
+
+    public Account(String number, AccountType type, Double balance) {
+        super();
+        this.number = number;
+        this.type = type;
+        this.balance = balance;
+    }
+
+    public Account(Long id, String number, AccountType type, Double balance) {
+        super();
+        this.number = number;
+        this.type = type;
+        this.balance = balance;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
+    }
+
+    public AccountType getType() {
+        return type;
+    }
+
+    public void setType(AccountType type) {
+        this.type = type;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
+    public Agency getAgency() {
+        return agency;
+    }
+
+    public void setAgency(Agency agency) {
+        this.agency = agency;
+    }
+
+    public Double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(Double balance) {
+        this.balance = balance;
+    }
+
     @Override
     public int hashCode() {
         final int prime = 31;

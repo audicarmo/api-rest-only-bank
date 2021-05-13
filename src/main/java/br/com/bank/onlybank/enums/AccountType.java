@@ -1,4 +1,4 @@
 package br.com.bank.onlybank.enums;
 
-public class AccountType {
+public enum AccountType {
 }

@@ -6,6 +6,9 @@ public class ValidationConstraints {
     public static final String DESCRIPTION_IS_REQUIRED = "Description is required";
     public static final String NUMBER_IS_REQUIRED = "Number is required";
     public static final String NAME_IS_REQUIRED = "Name is required";
+    public static final String MANDATORY = "Mandatory";
+    public static final String THE_LENGTH_MUST_BE_BETWEEN_5_AND_120_CHARACTERS = "The length must be between 5 and 120 characters";
+    public static final String CPF_IS_INVALID = "The CPF entered is invalid";
     public static final String VALUE_REQUIRED = "Deleted is required";
 
     public static final String NUMBER_MAX_SIZE_IS = "Max number size is {max}";
@@ -25,4 +28,6 @@ public class ValidationConstraints {
     public static final int NAME_MIN_SIZE = 3;
     public static final int NUMBER_MAX_SIZE = 5;
     public static final int NAME_MAX_SIZE = 40;
+    public static final int MIN_SIZE = 5;
+    public static final int MAX_SIZE = 90;
 }
